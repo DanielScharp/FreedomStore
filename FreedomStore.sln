@@ -5,6 +5,14 @@ VisualStudioVersion = 17.13.36105.23 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreedomStore.Api", "FreedomStore.Api\FreedomStore.Api.csproj", "{6DB13BBD-4065-46D6-BC14-F07668CE7E2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreedomStore.App", "FreedomStore.App\FreedomStore.App.csproj", "{631ACB27-B81B-4A39-9C4D-87E147141E41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreedomStore.Database", "FreedomStore.Database\FreedomStore.Database.csproj", "{FEF62C95-F476-413A-99F8-0C7F20D3CA12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreedomStore.Domain", "FreedomStore.Domain\FreedomStore.Domain.csproj", "{C18433C4-9E8B-4126-916F-26CF9B9DB873}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreedomStore.Web", "FreedomStore.Web\FreedomStore.Web.csproj", "{55B4E63A-7D9C-4618-99D7-BB4D032B071C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{6DB13BBD-4065-46D6-BC14-F07668CE7E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DB13BBD-4065-46D6-BC14-F07668CE7E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DB13BBD-4065-46D6-BC14-F07668CE7E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631ACB27-B81B-4A39-9C4D-87E147141E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631ACB27-B81B-4A39-9C4D-87E147141E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631ACB27-B81B-4A39-9C4D-87E147141E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631ACB27-B81B-4A39-9C4D-87E147141E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF62C95-F476-413A-99F8-0C7F20D3CA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF62C95-F476-413A-99F8-0C7F20D3CA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF62C95-F476-413A-99F8-0C7F20D3CA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF62C95-F476-413A-99F8-0C7F20D3CA12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18433C4-9E8B-4126-916F-26CF9B9DB873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18433C4-9E8B-4126-916F-26CF9B9DB873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18433C4-9E8B-4126-916F-26CF9B9DB873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18433C4-9E8B-4126-916F-26CF9B9DB873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B4E63A-7D9C-4618-99D7-BB4D032B071C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B4E63A-7D9C-4618-99D7-BB4D032B071C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B4E63A-7D9C-4618-99D7-BB4D032B071C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B4E63A-7D9C-4618-99D7-BB4D032B071C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

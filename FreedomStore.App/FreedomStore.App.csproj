@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FreedomStore.Database\FreedomStore.Database.csproj" />
+    <ProjectReference Include="..\FreedomStore.Domain\FreedomStore.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
