@@ -18,11 +18,11 @@ namespace FreedomStore.App
         }
 
         //Retorna o usuário por login e senha
-        public async Task<User> GetAsync(Login login)
+        public async Task<User> GetUserAsync(Login login)
         {
             try
             {
-                return await _usersRepository.GetAsync(login);
+                return await _usersRepository.GetUserAsync(login);
             }
             catch
             {
@@ -30,11 +30,11 @@ namespace FreedomStore.App
             }
         }
 
-        public async Task<User> ReturnUserForEmail(string apelido, string email)
+        public async Task<User> GetUserForEmailAsync(string apelido, string email)
         {
             try
             {
-                return await _usersRepository.ReturnUserForEmail(apelido, email);
+                return await _usersRepository.GetUserForEmailAsync(apelido, email);
             }
             catch
             {

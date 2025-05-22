@@ -26,7 +26,7 @@ namespace FreedomStore.Api.Controllers
         }
 
         [HttpPost]
-        [Route("in")]
+        [Route("access")]
         public async Task<IActionResult> AuthenticateAsync(Login login)
         {
             try
@@ -55,11 +55,11 @@ namespace FreedomStore.Api.Controllers
                 //Atribui a senha descriptada ao modelo
                 login.Password = password;
 
-                var user = await _usersApplication.GetAsync(login);
+                var user = await _usersApplication.GetUserAsync(login);
 
                 if(user.Id == 0)
                 {
-                    return NotFound(ResultMessage.Erro("Usuário não localizado com os dados informados!"));
+                    return Ok(ResultMessage.Erro("Usuário não localizado com os dados informados!"));
                 }
 
                 var token = TokenService.GenerateToken(user);
@@ -105,7 +105,7 @@ namespace FreedomStore.Api.Controllers
 
 
                 //Retorna o cliente pelo CPF e Email
-                var usuario = await _usersApplication.ReturnUserForEmail(login.Nickname, login.Email);
+                var usuario = await _usersApplication.GetUserForEmailAsync(login.Nickname, login.Email);
 
                 if(usuario.Id == 0)
                     return NotFound(ResultMessage.Erro("Cliente não localizado com os dados informados!"));
