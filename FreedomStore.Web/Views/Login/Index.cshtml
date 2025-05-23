@@ -1,0 +1,185 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Criar conta</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use seu e-mail para registro</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <div class="g-recaptcha" data-sitekey="6LcR8AgUAAAAALp_zyIF1E8rJV4sp2JtRTLVUxRo"></div>
+                <button>Cadastrar</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Fazer login</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use sua conta</span>
+                <input type="text" id="nickname" name="nickname" placeholder="Login" required autofocus />
+                <input type="password" id="password" name="password" placeholder="Senha" />
+                <div class="mt-2" id="dvResultLogin">
+                </div>
+                <a href="#">Esqueceu a sua senha?</a>
+                <button id="loginForm">Entrar</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Já tem uma conta?</h1>
+                    <p>Para ficar conectado, por favor, faça login com suas informações pessoais.</p>
+                    <button class="ghost" id="signIn">Login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Novo por aqui?</h1>
+                    <p>Inscreva-se e comece sua jornada conosco</p>
+                    <button class="ghost" id="signUp">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="/js/crypto.js"></script>
+<script>
+
+    $(function () {
+
+        $("#loginForm").click(function () {
+            login();
+        });
+        $(document).keypress(function(e) {
+        if (e.which == 13) { // 13 é o código da tecla Enter
+            login();
+        }
+    });
+
+
+    });
+    //Login
+    var login = function () {
+        var nickname = $("#nickname").val();
+        var password = $("#password").val();
+
+        //*-----------------*/
+        if (nickname == undefined || nickname == '') {
+
+            $("#dvResultLogin").html("<div class='alert alert-sm alert-danger'>O campo [Login] é obrigatório.</div>");
+            $("#dvResultLogin").removeClass("hidden");
+
+            return;
+        }
+
+        if (password == undefined || password == '') {
+            $("#dvResultLogin").html("<div class='alert alert-sm alert-danger'>O campo [Senha] é obrigatório.</div>");
+            $("#dvResultLogin").removeClass("hidden");
+            return;
+        }
+
+        //Recaptha
+        //var validated = $("#g-recaptcha-response").val();
+        var validated = "x";
+
+
+        if (validated == "") {
+            $("#dvResultLogin").html("<div class='alert alert-sm alert-danger'>Necessário validar o formulário antes de enviar.</div>");
+            return false;
+        }
+        //*-----------------*/
+
+        const key = CryptoJS.enc.Utf8.parse("ydvMmMc3I7HOje3i");
+        const iv = CryptoJS.enc.Utf8.parse("wp4zjuwGZwh593An");
+
+        //Encripta
+        var encPass = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(password), key,
+            {
+                keySize: 128 / 8,
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+
+        //Convert em string para passar na URL
+        var encPassString = window.btoa ? window.btoa(encPass) : Base64.encode(encPass + "");
+
+        var login = {
+            Nickname: nickname,
+            password: encPassString,
+            ipOrigem: "",
+            appOrigem: ""
+        }
+
+        $("#loginForm").prop("disabled", true);
+
+        $.ajax({
+            url: "/Login/Access",
+            async: true,
+            type: "POST",
+            data: login
+        }).done(function (data) {
+
+            $("#loginForm").prop("disabled", false);
+
+            if (parseInt(data) == 1) {
+                self.location = '/';
+            }
+            else {
+                $("#dvResultLogin").html("<div class='alert alert-sm alert-danger'>" + data + "</div>");
+                $("#dvResultLogin").removeClass("hidden");
+
+            }
+
+        }).fail(function (jqXHR, textStatus) {
+
+            $("#loginForm").prop("disabled", false);
+            $("#dvResultLogin").html("<div class='alert alert-sm alert-danger'>Ocorreu um erro ao tentar executar a operação. Tente mais tarde!</div>");
+        });
+    }
+
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>

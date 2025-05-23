@@ -20,7 +20,7 @@ namespace FreedomStore.Database.Repository
         }
 
         //Retornar usuário por apelido e password || READ_WRITE
-        public async Task<User> GetAsync(Login login)
+        public async Task<User> GetUserAsync(Login login)
         {
 
             using var connection = new MySqlConnection(_connMySql);
@@ -44,6 +44,7 @@ namespace FreedomStore.Database.Repository
 
                     cliente.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                     cliente.Name = reader.GetString(reader.GetOrdinal("Name"));
+                    cliente.Nickname = reader.GetString(reader.GetOrdinal("Nickname"));
 
                     return cliente;
                 }
@@ -61,7 +62,7 @@ namespace FreedomStore.Database.Repository
             }
         }
         //Retornar usuário por apelido e password || READ_WRITE
-        public async Task<User> ReturnUserForEmail(string apelido, string email)
+        public async Task<User> GetUserForEmailAsync(string apelido, string email)
         {
 
             using var connection = new MySqlConnection(_connMySql);
