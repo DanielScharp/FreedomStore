@@ -15,6 +15,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 
 builder.Services.Add(new ServiceDescriptor(typeof(UsersRepository), new UsersRepository(Environment.GetEnvironmentVariable("FreedomStore_ConnMySql"))));
+builder.Services.Add(new ServiceDescriptor(typeof(ProductsRepository), new ProductsRepository(Environment.GetEnvironmentVariable("FreedomStore_ConnMySql"))));
 builder.Services.Configure<EmailSettings>(options => {
     options.Name = Environment.GetEnvironmentVariable("FreedomStore_EmailName");
     options.Sender = Environment.GetEnvironmentVariable("FreedomStore_EmailSender");
@@ -94,6 +95,7 @@ builder.Services.AddCors(options => {
 
 
 builder.Services.AddScoped<UsersApplication>();
+builder.Services.AddScoped<ProductsApplication>();
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddScoped<EmailSender>();
 
