@@ -1,9 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
+<script src="~/js/jquery-3.6.0.js" asp-append-version="true"></script>
 
 <div class="row">
     <div class="col-12">
         <input class="form-control" type="text" placeholder="Pesquisar por produto aqui..." />
     </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <div id="filter-category">
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div id="products-list">
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        productsList();
+    })
+    var productsList = function() {
+        $.ajax({
+            url: "/Products/List",
+            method: "GET",
+            success: function(response) {
+                $("#products-list").html(response)
+            }
+        })
+    }
+</script>

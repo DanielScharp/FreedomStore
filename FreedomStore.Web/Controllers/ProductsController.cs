@@ -1,6 +1,8 @@
-﻿using FreedomStore.Web.Models;
+﻿using FreedomStore.Domain.Product;
+using FreedomStore.Web.Models;
 using FreedomStore.Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace FreedomStore.Web.Controllers
 {
@@ -15,7 +17,8 @@ namespace FreedomStore.Web.Controllers
             _apiService = apiService;
 
         }
-        public async Task<IActionResult> IndexAsync()
+
+        public async Task<IActionResult> List()
         {
             var request = new ApiRequest
             {
@@ -24,7 +27,12 @@ namespace FreedomStore.Web.Controllers
             };
 
             var result = await _apiService.ExecuteRequestAsync(request);
-            return View();
+            List<Product> listProducts = new List<Product>();
+            if(result.Success)
+            {
+                listProducts = JsonConvert.DeserializeObject<List<Product>>(result.Data.ToString());
+            }
+            return View("_ProductsList", listProducts);
         }
     }
 }

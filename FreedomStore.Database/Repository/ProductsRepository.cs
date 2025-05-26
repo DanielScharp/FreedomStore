@@ -49,6 +49,7 @@ namespace FreedomStore.Database.Repository
                     product.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                     product.Name = reader[reader.GetOrdinal("Name")].ToString();
                     product.Description = reader[reader.GetOrdinal("Description")].ToString();
+                    product.ImageUrl = reader[reader.GetOrdinal("ImageUrl")].ToString();
                     product.Price = reader[reader.GetOrdinal("Price")] != DBNull.Value ? reader.GetDecimal("Price") : 0;
                     product.StockQuantity = reader[reader.GetOrdinal("StockQuantity")] != DBNull.Value ? reader.GetInt32("StockQuantity") : 0;
 

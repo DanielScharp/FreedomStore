@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FreedomStore.Domain.Product.Product>
+
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/product.css" asp-append-version="true" />
+
+@foreach(var item in Model)
+{
+    <div class="product">
+        <img src="@item.ImageUrl" class="product-img" />
+        <div class="product-header">
+            <div class="product-name">
+                @item.Name
+            </div>
+            <div class="product-info">
+                <div class="product-price">
+                    @item.Price.ToString("C2")
+                </div>
+                <div class="product-category">
+                    <i class="fas fa-hamburger"></i> @item.Category.Name
+                </div>
+            </div>
+        </div>
+        <div class="btn-cart">
+            <button class="button"><i class="fas fa-plus"></i></button>
+            <div>@item.StockQuantity</div>
+            <button class="button"><i class="fas fa-minus"></i></button>
+        </div>
+
+    </div>
+}

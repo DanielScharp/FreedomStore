@@ -8,6 +8,7 @@
 
     @* <link href="~/css/bootstrap.css" rel="stylesheet" asp-append-version="true" /> *@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/sideNavigation.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -91,8 +92,8 @@
     </div>
 
     <script>
-
         var JsAlert = function (info, callback) {
+            console.log("entrou")
             // Exibe o modal
             $('#modalJsAlert').modal({
                 backdrop: 'static',
