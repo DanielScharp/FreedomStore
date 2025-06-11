@@ -11,18 +11,18 @@
     <link rel="stylesheet" href="~/css/sideNavigation.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <script src="./js/tailwind.js"></script>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <!-- Menu Esquerdo -->
-            <div class="col-md-12 left-menu">
+            <div class="left-menu">
                 @await Html.PartialAsync("_LeftMenu")
             </div>
 
             <!-- Conteúdo Principal -->
-            <div class="col-md-8 main-content">
+            <div class="main-content">
                 @RenderBody()
             </div>
         </div>

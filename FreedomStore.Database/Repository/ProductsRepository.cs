@@ -34,7 +34,6 @@ namespace FreedomStore.Database.Repository
                 query.Append(" SELECT t1.*, t2.Name as 'CategoryName' ");
                 query.Append(" FROM products t1 ");
                 query.Append(" LEFT JOIN products_category t2 ON t1.CategoryId = t2.Id ");
-                query.Append(" WHERE t1.IsActive = 1 ");
 
                 using MySqlCommand command = new(query.ToString(), connection);
 
@@ -51,6 +50,7 @@ namespace FreedomStore.Database.Repository
                     product.Description = reader[reader.GetOrdinal("Description")].ToString();
                     product.ImageUrl = reader[reader.GetOrdinal("ImageUrl")].ToString();
                     product.Price = reader[reader.GetOrdinal("Price")] != DBNull.Value ? reader.GetDecimal("Price") : 0;
+                    product.Discount = reader[reader.GetOrdinal("Discount")] != DBNull.Value ? reader.GetDecimal("Discount") : 0;
                     product.StockQuantity = reader[reader.GetOrdinal("StockQuantity")] != DBNull.Value ? reader.GetInt32("StockQuantity") : 0;
 
                     product.Category.Id = reader[reader.GetOrdinal("CategoryId")] != DBNull.Value ? reader.GetInt32("CategoryId") : 0;
