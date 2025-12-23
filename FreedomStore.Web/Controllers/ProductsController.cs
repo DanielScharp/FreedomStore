@@ -34,5 +34,25 @@ namespace FreedomStore.Web.Controllers
             }
             return View("_ProductsList", listProducts);
         }
+
+        public async Task<IActionResult> CategoryList()
+        {
+            var request = new ApiRequest
+            {
+                Route = "/Api/Products/category-list",
+                Method = HttpMethod.Get,
+            };
+
+            var result = await _apiService.ExecuteRequestAsync(request);
+
+            List<ProductCategory> listCategorys = new List<ProductCategory>();
+
+            if(result.Success)
+            {
+                listCategorys = JsonConvert.DeserializeObject<List<ProductCategory>>(result.Data.ToString());
+            }
+
+            return View("_CategoryList", listCategorys);
+        }
     }
 }

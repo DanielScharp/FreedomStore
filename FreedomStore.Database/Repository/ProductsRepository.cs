@@ -71,5 +71,47 @@ namespace FreedomStore.Database.Repository
                     connection.Close();
             }
         }
+
+        public async Task<List<ProductCategory>> ListProductsCategoryAsync()
+        {
+
+            using var connection = new MySqlConnection(_connMySql);
+
+            try
+            {
+                await connection.OpenAsync();
+
+                var query = new StringBuilder();
+                query.Append(" SELECT * ");
+                query.Append(" FROM products_category ");
+
+                using MySqlCommand command = new(query.ToString(), connection);
+
+                using MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
+
+                List<ProductCategory> products = new List<ProductCategory>();
+
+                while(reader.Read())
+                {
+                    var product = new ProductCategory();
+
+                    product.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    product.Name = reader[reader.GetOrdinal("Name")].ToString();
+
+                    products.Add(product);
+                }
+
+                return products;
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if(connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
     }
 }

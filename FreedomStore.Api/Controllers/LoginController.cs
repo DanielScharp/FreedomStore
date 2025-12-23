@@ -79,7 +79,8 @@ namespace FreedomStore.Api.Controllers
             }
             catch(Exception ex)
             {
-                // _logger.LogError(ex, "Erro ao tentar processar os dados!"); -----------------------------------------------------------Registar Log
+                //Registar Log
+                // _logger.LogError(ex, "Erro ao tentar processar os dados!"); 
 
                 return new StatusCodeResult(500);
 
@@ -133,7 +134,8 @@ namespace FreedomStore.Api.Controllers
                     }
                     catch(Exception ex)
                     {
-                        //_logger.LogError(ex, "Erro ao tentar enviar o e-mail!"); -----------------------------------------------------------Registar Log
+                        //Registar Log
+                        // _logger.LogError(ex, "Erro ao tentar processar os dados!"); 
                         return BadRequest(ResultMessage.Erro("Ocorreu um erro ao tentar enviar o e-mail! " + ex.InnerException));
                     }
                 }
@@ -143,7 +145,8 @@ namespace FreedomStore.Api.Controllers
             }
             catch(Exception ex)
             {
-                //_logger.LogError(ex, "Erro ao tentar processar os dados!"); ----------------------------------------------------------- Registar Log
+                //Registar Log
+                // _logger.LogError(ex, "Erro ao tentar processar os dados!"); 
                 return new StatusCodeResult(500);
             }
         }

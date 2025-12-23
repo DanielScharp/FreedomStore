@@ -30,5 +30,17 @@ namespace FreedomStore.App
                 throw;
             }
         }
+
+        public async Task<List<ProductCategory>> ListProductsCategoryAsync()
+        {
+            try
+            {
+                return await _productsRepository.ListProductsCategoryAsync();
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

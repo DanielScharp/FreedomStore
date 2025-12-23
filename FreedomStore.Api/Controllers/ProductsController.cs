@@ -38,5 +38,20 @@ namespace FreedomStore.Api.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("category-list")]
+        public async Task<IActionResult> ListProductsCategoryAsync()
+        {
+            try
+            {
+                List<ProductCategory> listProducts = await _productsApplication.ListProductsCategoryAsync();
+                return Ok(ResultMessage.Sucesso(1, listProducts));
+            }
+            catch
+            {
+                return new StatusCodeResult(500);
+            }
+        }
+
     }
 }

@@ -17,13 +17,14 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <div id="products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+        <div id="products-list" class="row">
         </div>
     </div>
 </div>
 <script>
     $(function(){
         productsList();
+        CategoryProductsList();
     })
     var productsList = function() {
         $.ajax({
@@ -31,6 +32,16 @@
             method: "GET",
             success: function(response) {
                 $("#products-list").html(response)
+            }
+        })
+    }
+
+    var CategoryProductsList = function() {
+        $.ajax({
+            url: "/Products/CategoryList",
+            method: "GET",
+            success: function(response) {
+                $("#filter-category").html(response)
             }
         })
     }

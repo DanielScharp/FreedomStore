@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FreedomStore.Domain.Product.ProductCategory>
+
+@{
+    Layout = null;
+}
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+        @foreach(var item in Model)
+        {
+            <div class="swiper-slide" style="width:140px; height:140px; border: 2px solid #00eeaa; border-radius: 6px">
+                @item.Name
+            </div>
+        }
+
+    </div>
+</div>
+
+
+
